@@ -1,0 +1,21 @@
+{%extends "base/base.html" %}
+
+{% block block1 %}
+    <div class="container">
+        <h1>상품을 등록하는 페이지입니다</h1>
+        
+        <form method='POST' action="{% url 'create' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+            <p>작성자:</p>
+              {{loggeduser}}
+            <p>제목:</p>
+            <input type="text" name="title" required>
+            <p>이미지:</p>
+            <input type="file"  name="image" required>
+            <p>본문:</p>
+            <textarea cols=50 rows=5 name="content"></textarea>
+            <br><br>
+            <input class="btn btn-dark" type="submit" value="제출하기">
+        </form>
+    </div>
+{% endblock %}
